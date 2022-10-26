@@ -14,7 +14,7 @@
       <div class="col-4" id="imageBoxDetect">
         <fade-loader style="color: aqua;" v-if="checkLoading"></fade-loader>
         <div id="preview">
-          <img v-bind:src="'data:image/jpeg;base64,'+imageBase64" v-if="check_Image"/>
+          <img alt=" " v-bind:src="'data:image/jpeg;base64,'+imageBase64" v-if="check_Image"/>
         </div>
       </div>
       <div class="col-2">
@@ -43,7 +43,7 @@
     </div>
     <div class="row">
       <div class="col-5">
-        <input class="form-control" type="file" id="formFile" @change="onFileChange" style="margin: 20px;"/>
+        <input alt=" " class="form-control" type="file" id="formFile" @change="onFileChange" style="margin: 20px;"/>
         <button @click="getData">SEND</button>
       </div>
     </div>
@@ -70,7 +70,11 @@ export default {
   },
   methods: {
     onFileChange(e) {
-      this.path = ''
+      this.check_Image = false
+      this.bankName = '',
+      this.bankNumber = '',
+      this.userName = '',
+      this.imageBase64 = '',
       this.path = e.target.files[0];
       this.url = URL.createObjectURL(this.path);
       console.log(this.path);
